@@ -1,5 +1,6 @@
 package org.jcluster.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,11 @@ public class Cluster {
 	private double averageSize;
 	private Center center;
 	
+	public Cluster() { 
+		this.points = new ArrayList<Point>();
+		this.clusterSize = 0;
+		this.center= new Center();
+	}
 	/**
 	 * @return the points
 	 */

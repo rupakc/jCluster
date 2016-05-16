@@ -16,6 +16,11 @@ import org.jcluster.util.DistanceUtil;
  */
 public class KMeansUtil {
 	
+	/** 
+	 * 
+	 * @param points
+	 * @param clusters
+	 */
 	public static void assignClusters(List<Point> points, List<Cluster> clusters) {  
 		
 		double distance;
@@ -57,6 +62,10 @@ public class KMeansUtil {
 		}
 	}
 	
+	/** 
+	 * 
+	 * @param clusters
+	 */
 	public static void computeClusterCenters(List<Cluster> clusters) { 
 		
 		for (Cluster cluster : clusters) { 
@@ -66,6 +75,11 @@ public class KMeansUtil {
 		}
 	}
 	
+	/** 
+	 * 
+	 * @param points
+	 * @return
+	 */
 	public static Point getMeanPoint(List<Point> points) { 
 		
 		int setSize = points.size();
@@ -93,6 +107,12 @@ public class KMeansUtil {
 		return p;
 	}
 	
+	/** 
+	 * 
+	 * @param points
+	 * @param numOfClusters
+	 * @return
+	 */
 	public static List<Center> getInitialCenters(List<Point> points,int numOfClusters) { 
 		
 		List<Center> centers = new ArrayList<Center>();
@@ -104,7 +124,7 @@ public class KMeansUtil {
 			
 			tempIndex = random.nextInt(points.size()); 
 			
-			if (!initialClusterIndex.contains((Integer)tempIndex)) {  
+			if (!initialClusterIndex.contains((Integer)tempIndex)) { 
 				
 				initialClusterIndex.add(tempIndex);
 			}

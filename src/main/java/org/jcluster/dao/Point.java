@@ -1,5 +1,6 @@
 package org.jcluster.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Point {
@@ -11,6 +12,10 @@ public class Point {
 	private boolean isSet;
 	private boolean isCenter;
 
+	public Point() {  
+		
+		this.values = new ArrayList<Double>();
+	}
 	
 	/**
 	 * @return the values
