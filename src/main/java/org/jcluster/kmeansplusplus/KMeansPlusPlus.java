@@ -1,4 +1,4 @@
-package org.jcluster.kmeans;
+package org.jcluster.kmeansplusplus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +11,9 @@ import org.jcluster.util.ClusterUtil;
 /** 
  * Implements the KMeans algorithm with random initial centers
  * @author Rupak Chakraborty
- * @since 15 May,2016
+ * @since 17 May,2016
  */
-public class KMeans {
+public class KMeansPlusPlus {
 	
 	private List<Point> points;
 	private int numOfCenters; 
@@ -24,7 +24,7 @@ public class KMeans {
 	 * @param points List<Point> containing the points to be clustered
 	 * @param numOfCenters Integer containing the number of centers in the cluster
 	 */
-	public KMeans(List<Point> points,int numOfCenters) { 
+	public KMeansPlusPlus(List<Point> points,int numOfCenters) { 
 		
 		this.points = points;
 		this.numOfCenters = numOfCenters;
@@ -36,7 +36,7 @@ public class KMeans {
 	 */
 	public List<Cluster> getClusters() {  
 		
-		List<Center> initialCenter = KMeansUtil.getInitialCenters(points, numOfCenters);
+		List<Center> initialCenter = KMeansPlusPlusUtil.getInitialCenters(points, numOfCenters);
 		List<Cluster> clusters = new ArrayList<Cluster>(); 
 		Double prevObjective = 0.0;
 		Double presentObjective = 0.0; 
@@ -48,14 +48,14 @@ public class KMeans {
 			clusters.add(cluster);
 		}
 		
-		KMeansUtil.assignClusters(points, clusters);
+		KMeansPlusPlusUtil.assignClusters(points, clusters);
 		presentObjective = ClusterUtil.getIntraClusterDistance(clusters);
 		
 		while(Math.abs(presentObjective-prevObjective) > this.threshold) {  
 			
 			prevObjective = presentObjective;
-			KMeansUtil.computeClusterCenters(clusters);
-			KMeansUtil.assignClusters(points, clusters);
+			KMeansPlusPlusUtil.computeClusterCenters(clusters);
+			KMeansPlusPlusUtil.assignClusters(points, clusters);
 			presentObjective = ClusterUtil.getIntraClusterDistance(clusters);
 		}
 		

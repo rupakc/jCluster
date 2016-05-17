@@ -15,6 +15,7 @@ public class Point {
 	public Point() {  
 		
 		this.values = new ArrayList<Double>();
+		this.isCenter = false;
 	}
 	
 	/**
