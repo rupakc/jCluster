@@ -119,6 +119,70 @@ public class ClusterUtil {
 	} 
 	
 	/** 
+	 * Given two clusters returns the maximum distance between two points in a cluster
+	 * @param firstCluster Cluster object containing the first cluster
+	 * @param secondCluster Cluster object containing the second cluster
+	 * @return Double containing the maximum distance between the clusters
+	 */
+	public static Double getMaximumDistancesBetweenClusterCenters(Cluster firstCluster,Cluster secondCluster) { 
+		
+		double maxDistance = DistanceUtil.euclideanDistance(firstCluster.getPoints().get(0), secondCluster.getPoints().get(0));
+		double tempDistance;
+		Point firstPoint;
+		Point secondPoint;
+		
+		for (int i = 0; i < firstCluster.getPoints().size(); i++) { 
+			
+			firstPoint = firstCluster.getPoints().get(i); 
+			
+			for (int j = i+1;j < secondCluster.getPoints().size(); j++) {  
+				
+				secondPoint = secondCluster.getPoints().get(j);
+				tempDistance = DistanceUtil.euclideanDistance(firstPoint, secondPoint); 
+				
+				if (tempDistance > maxDistance) { 
+					
+					maxDistance = tempDistance;
+				}
+			}
+		}
+		
+		return maxDistance;
+	}
+	
+	/** 
+	 * Given two clusters returns the minimum distance between two points in a cluster
+	 * @param firstCluster Cluster object containing the first cluster
+	 * @param secondCluster Cluster object containing the second cluster
+	 * @return Double containing the minimum distance between the clusters
+	 */
+	public static Double getMinimumDistancesBetweenClusterCenters(Cluster firstCluster,Cluster secondCluster) { 
+		
+		double maxDistance = DistanceUtil.euclideanDistance(firstCluster.getPoints().get(0), secondCluster.getPoints().get(0));
+		double tempDistance;
+		Point firstPoint;
+		Point secondPoint;
+		
+		for (int i = 0; i < firstCluster.getPoints().size(); i++) { 
+			
+			firstPoint = firstCluster.getPoints().get(i); 
+			
+			for (int j = i+1;j < secondCluster.getPoints().size(); j++) {  
+				
+				secondPoint = secondCluster.getPoints().get(j);
+				tempDistance = DistanceUtil.euclideanDistance(firstPoint, secondPoint); 
+				
+				if (tempDistance < maxDistance) { 
+					
+					maxDistance = tempDistance;
+				}
+			}
+		}
+		
+		return maxDistance;
+	}
+	
+	/** 
 	 * Given a list of clusters returns the sum of distances of each cluster from its centroid
 	 * @param clusters List<Clusters> containing the cluster objects
 	 * @return Double containing the value of the intra cluster distance
