@@ -18,6 +18,27 @@ public class Point {
 		this.isCenter = false;
 	}
 	
+	/** 
+	 * 
+	 * @param dimension
+	 * @return
+	 */
+	public static Point getPointWithZeroValues(int dimension) { 
+		
+		Point p = new Point();
+		p.setDimension(dimension);
+		List<Double> values = new ArrayList<Double>(); 
+		
+		for(int i = 0; i < dimension; i++) {  
+			
+			values.add(0.0);
+		}
+		
+		p.setValues(values);
+		
+		return p;
+	}
+	
 	/**
 	 * @return the values
 	 */
@@ -135,7 +156,4 @@ public class Point {
 			return false;
 		return true;
 	}
-	
-	
-
 }
