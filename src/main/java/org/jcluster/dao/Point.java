@@ -18,6 +18,7 @@ public class Point {
 		this.values = new ArrayList<Double>();
 		this.isCenter = false;
 		this.isSet = false;
+		ispartOfCluster = false;
 	}
 	
 	/** 

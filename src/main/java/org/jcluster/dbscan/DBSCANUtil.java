@@ -66,8 +66,9 @@ public class DBSCANUtil {
 				}
 			}
 			
-			if (!tempPoint.isIspartOfCluster()) { 
+			if (!tempPoint.isIspartOfCluster()) {  
 				
+				tempPoint.setIspartOfCluster(true);
 				cluster.getPoints().add(tempPoint);
 			}
 		}
