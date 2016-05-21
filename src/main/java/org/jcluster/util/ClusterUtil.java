@@ -183,6 +183,33 @@ public class ClusterUtil {
 	}
 	
 	/** 
+	 * Returns the averageDistance between the two clusters
+	 * @param firstCluster First cluster object
+	 * @param secondCluster Second cluster object
+	 * @return Double containing the average distance between the clusters
+	 */
+	public static Double getAverageDistanceBetweenClusterCenters(Cluster firstCluster,Cluster secondCluster) { 
+		
+		double averageDistance = 0.0;
+		Point firstPoint;
+		Point secondPoint;
+		int totalSize = firstCluster.getPoints().size() + secondCluster.getPoints().size();
+		
+		for (int i = 0; i < firstCluster.getPoints().size(); i++) { 
+			
+			firstPoint = firstCluster.getPoints().get(i);
+			
+			for (int j = 0; j < secondCluster.getPoints().size(); j++) { 
+				
+				secondPoint = secondCluster.getPoints().get(j);
+				averageDistance = averageDistance + DistanceUtil.euclideanDistance(firstPoint, secondPoint);
+			}
+		}
+		
+		return (averageDistance/totalSize);
+	}
+	
+	/** 
 	 * Given a list of clusters returns the sum of distances of each cluster from its centroid
 	 * @param clusters List<Clusters> containing the cluster objects
 	 * @return Double containing the value of the intra cluster distance
