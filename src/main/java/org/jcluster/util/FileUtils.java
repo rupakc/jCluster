@@ -6,10 +6,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jcluster.dao.Point;
+
 /** 
  * Defines a set of utlity functions for reading files
  * @author Rupak Chakraborty
- * @since 23 March, 2016
+ * @since 23 April, 2016
  */
 public class FileUtils {
 	
@@ -58,5 +60,39 @@ public class FileUtils {
 		br.close();
 		
 		return dataArray;
+	}
+	
+	/** 
+	 * Given a filename in a csv format returns a list of point objects from it
+	 * @param filename String containing the filename containing the data points
+	 * @return List<Point> containing the point objects
+	 * @throws IOException
+	 */
+	public static List<Point> getPointList(String filename) throws IOException { 
+		
+		double [][] dataPoints = getDataSet(filename);
+		List<Double> pointValues;
+		int dimension = dataPoints[0].length;
+		List<Point> points = new ArrayList<Point>(); 
+		Point tempPoint; 
+		
+		for (int i = 0; i < dataPoints.length; i++) {  
+			
+			pointValues = new ArrayList<Double>();
+			tempPoint = new Point();
+			
+			for (int j = 0; j < dataPoints[i].length; j++) { 
+				
+				pointValues.add(dataPoints[i][j]);
+			}
+			
+			tempPoint.setValues(pointValues);
+			tempPoint.setDimension(dimension);
+			tempPoint.setIndexNumber(i);
+			
+			points.add(tempPoint);
+		}
+		
+		return points;
 	}
 }

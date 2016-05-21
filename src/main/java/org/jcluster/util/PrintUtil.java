@@ -11,6 +11,10 @@ import java.util.List;
 
 public class PrintUtil {
 	
+	/** 
+	 * Given a vector prints it to the console
+	 * @param array Array which is to be printed
+	 */
 	public static <T> void printVector(T array[]) { 
 		
 		for (T temp : array) { 
@@ -19,6 +23,10 @@ public class PrintUtil {
 		}
 	}
 	
+	/** 
+	 * Given a list prints it to the screen
+	 * @param vector List which is to be printed
+	 */
 	public static <T> void printVector(List<T> vector) { 
 		
 		for (T temp : vector) { 
@@ -27,6 +35,10 @@ public class PrintUtil {
 		}
 	}
 	
+	/** 
+	 * Given a matrix prints it to the screen
+	 * @param matrix 2-D matrix which is to be printed
+	 */
 	public static <T> void printMatrix(T [][] matrix) { 
 		
 		for (int i = 0; i < matrix.length; i++) {  

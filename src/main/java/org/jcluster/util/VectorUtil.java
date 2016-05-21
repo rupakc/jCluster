@@ -61,10 +61,10 @@ public class VectorUtil {
 	}
 
 	/** 
-	 * 
-	 * @param p1
-	 * @param p2
-	 * @return
+	 * Given two points add them up
+	 * @param p1 First Point which is to be added
+	 * @param p2 Second Point which is to be added
+	 * @return Point containing the addition of two points
 	 */
 	public static Point addPoints(Point p1,Point p2) { 
 		
@@ -86,10 +86,10 @@ public class VectorUtil {
 	}
 	
 	/** 
-	 * 
-	 * @param p1
-	 * @param p2
-	 * @return
+	 * Given two points add their specific dimensions
+	 * @param p1 first point which is to be added
+	 * @param p2 second point which is to be added
+	 * @return Point which contains the subtraction of two points
 	 */
 	public static Point subtractPoints(Point p1,Point p2) { 
 		
