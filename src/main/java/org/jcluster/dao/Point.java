@@ -11,11 +11,13 @@ public class Point {
 	private int clusterNumber;
 	private boolean isSet;
 	private boolean isCenter;
+	private boolean ispartOfCluster;
 
 	public Point() {  
 		
 		this.values = new ArrayList<Double>();
 		this.isCenter = false;
+		this.isSet = false;
 	}
 	
 	/** 
@@ -155,5 +157,19 @@ public class Point {
 		} else if (!values.equals(other.values))
 			return false;
 		return true;
+	}
+
+	/**
+	 * @return the ispartOfCluster
+	 */
+	public boolean isIspartOfCluster() {
+		return ispartOfCluster;
+	}
+
+	/**
+	 * @param ispartOfCluster the ispartOfCluster to set
+	 */
+	public void setIspartOfCluster(boolean ispartOfCluster) {
+		this.ispartOfCluster = ispartOfCluster;
 	}
 }
