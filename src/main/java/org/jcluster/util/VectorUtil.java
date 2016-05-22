@@ -1,6 +1,7 @@
 package org.jcluster.util;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.jcluster.dao.Point;
@@ -108,5 +109,59 @@ public class VectorUtil {
 		p.setValues(addPoints);
 		
 		return p;
+	}
+	
+	/** 
+	 * Given the list of points calculates the median per dimension
+	 * @param points List<Point> whose median per dimension has to be calculated
+	 * @return Point object containing the value of the median per dimension
+	 */
+	public static Point getMedianPerDimension(List<Point> points) { 
+		
+		int dimension = points.get(0).getValues().size();
+		List<Double> medianValues = new ArrayList<Double>();
+		List<Double> pointsPerDimension = new ArrayList<Double>(); 
+		Point medianPoint = new Point(); 
+		
+		for (int i = 0; i < dimension; i++) {  
+			
+			pointsPerDimension.clear(); 
+			
+			for (int j = 0; j < points.size(); j++) {  
+				
+				pointsPerDimension.add(points.get(j).getValues().get(i));
+			}
+			
+			medianValues.add(getMedian(pointsPerDimension));
+		}
+		
+		medianPoint.setValues(medianValues);
+		medianPoint.setDimension(dimension);
+		
+		return medianPoint;
+	} 
+	
+	/** 
+	 * Given a list of numbers returns the median of the of the list
+	 * @param numbers List<Double> containing the list of numbers
+	 * @return Double containing the median of the list of numbers
+	 */
+	private static Double getMedian(List<Double> numbers) { 
+		
+		double median;
+		Collections.sort(numbers);
+		int size = numbers.size();
+		
+		if (size%2 != 0) { 
+			median = numbers.get(size/2);
+		} else {
+			if (size != 1) {
+				median = (numbers.get(size/2) + numbers.get((size/2)-1))/2.0;
+			} else {
+				median = numbers.get(size/2); 
+			}
+		}
+		
+		return median;
 	}
 }
